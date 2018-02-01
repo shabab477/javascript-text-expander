@@ -54,6 +54,10 @@
 
 <script type="text/javascript" src="textexpander.js"></script>
 <script type="text/javascript">
+
+    /*
+        This is the dictionary made up with JavaScript object notation. 
+    */
     var dictionary = {
         "os": "operating system",
         "wtf": "what the fuck",
@@ -83,13 +87,25 @@
         "rofl": "rolling on the floor laughing",
         "lmao": "laughing my ass off"
     };
+    
+    /*
+        Passing the dictionary and the TextArea dom element to the textExpander function
+        that was made in textexpander.js. querySelectorAll seems like a better API to 
+        use than just querySelector since we might want multiple instances of TextArea to
+        have the logic implemented on it. Not sure whether I should use ES6 though, Array.from 
+        seems like a good alternative.
+    */
+    textExpander([...document.querySelectorAll(".inpText")], dictionary);
 
-    textExpander([document.querySelector("#inpText")], dictionary);
-
+    /*
+        using map to iterate through the dictionary and storing it in a formatted way.
+        UI specific code. Functional programming, yeah!
+    */
     var abbrs = Object.keys(dictionary).map(function (data) {
         return "<code>" + data + "</code>";
     }).join(", ");
 
+    //UI specific code. To show the data in a formatted way.
     document.querySelector('.keys').innerHTML = abbrs
 </script>
 </body>

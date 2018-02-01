@@ -1,9 +1,13 @@
 var textExpander = function (textObjects, dictionary) {
     "use strict";
+    //null check
     if (!dictionary || !textObjects) {
         return;
     }
+    
+    //making the text objects as an array for easy management of dom elements.  
     if (!(textObjects instanceof Array)) {
+        
         textObjects = [textObjects];
     }
 
